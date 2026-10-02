@@ -1,0 +1,13 @@
+# Dependencies (harness only)
+node_modules/
+
+# Build instructions and reports, kept local
+BUILD_SPEC.md
+BUILD_REPORT.md
+CLAUDE.md
+.claude/
+
+# OS and editor files
+.DS_Store
+.vscode/
+.idea/

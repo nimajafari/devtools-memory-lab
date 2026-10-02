@@ -1,0 +1,187 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  color: #1c2430;
+  background: #f5f6f8;
+}
+
+a {
+  color: #0b57d0;
+}
+
+button {
+  font: inherit;
+  padding: 8px 14px;
+  border: 1px solid #b8c0cc;
+  border-radius: 6px;
+  background: #fff;
+  color: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #eef1f5;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #0b57d0;
+  outline-offset: 2px;
+}
+
+button[disabled] {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  padding: 16px 24px;
+  background: #fff;
+  border-bottom: 1px solid #dde1e7;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.categories button[aria-pressed="true"] {
+  background: #1c2430;
+  border-color: #1c2430;
+  color: #fff;
+}
+
+.mode {
+  margin: 0 0 0 auto;
+}
+
+.mode strong {
+  margin-right: 8px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #fde2e1;
+  color: #8a1c13;
+}
+
+[data-mode="fixed"] .mode strong {
+  background: #dcf3e3;
+  color: #14532d;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 16px 24px;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid #dde1e7;
+  border-radius: 8px;
+}
+
+#run-switches {
+  background: #0b57d0;
+  border-color: #0b57d0;
+  color: #fff;
+}
+
+.stats {
+  flex: 1;
+  min-width: 260px;
+}
+
+.stats dl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+  margin: 0;
+}
+
+.stats dt {
+  font-size: 0.85rem;
+  color: #515c6b;
+}
+
+.stats dd {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.stats-note {
+  margin: 8px 0 0;
+  font-size: 0.85rem;
+  color: #515c6b;
+}
+
+#grid-title {
+  margin: 24px 0 12px;
+  font-size: 1.1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.card {
+  padding: 12px;
+  background: #fff;
+  border: 1px solid #dde1e7;
+  border-radius: 8px;
+}
+
+.card-swatch {
+  height: 120px;
+  border-radius: 6px;
+}
+
+.card-name {
+  margin: 10px 0 0;
+  font-size: 1rem;
+}
+
+.card-price {
+  margin: 2px 0;
+  font-weight: 600;
+}
+
+.card-description {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #515c6b;
+}
+
+.site-footer {
+  padding: 24px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #515c6b;
+}
+
+.site-footer a {
+  margin-left: 12px;
+}

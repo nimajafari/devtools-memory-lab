@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oxyplug Demo Store</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Oxyplug Demo Store</h1>
+    <nav id="categories" class="categories" aria-label="Categories">
+      <button type="button" data-category="Shoes">Shoes</button>
+      <button type="button" data-category="Bags">Bags</button>
+      <button type="button" data-category="Watches">Watches</button>
+      <button type="button" data-category="Hats">Hats</button>
+      <button type="button" data-category="Jackets">Jackets</button>
+    </nav>
+    <p class="mode">
+      <strong id="mode-label"></strong>
+      <a id="mode-link" href="?mode=fixed"></a>
+    </p>
+  </header>
+
+  <main>
+    <section class="controls" aria-label="Lab controls">
+      <button type="button" id="run-switches">Run 10 switches</button>
+      <div class="stats">
+        <dl aria-live="polite">
+          <div><dt>Renders so far</dt><dd id="stat-renders">0</dd></div>
+          <div><dt>Card elements held in the cache</dt><dd id="stat-cached">0</dd></div>
+          <div><dt>Resize listeners active</dt><dd id="stat-listeners">0</dd></div>
+        </dl>
+        <p class="stats-note">These are the app's own counters, not memory measurements. DevTools is the source of truth.</p>
+      </div>
+    </section>
+
+    <h2 id="grid-title"></h2>
+    <div id="grid" class="grid"></div>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      Built by Nima Jafari for Oxyplug.
+      <a href="ARTICLE_URL">Read the article</a>
+      <a href="https://github.com/nimajafari/devtools-memory-lab">View the repo</a>
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

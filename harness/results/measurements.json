@@ -1,0 +1,143 @@
+{
+  "date": "2026-10-01T05:48:24.518Z",
+  "environment": {
+    "chrome": "Chrome/154.0.8037.57",
+    "puppeteer": "25.12.0",
+    "node": "v26.8.2",
+    "os": "Darwin 27.0.0 arm64"
+  },
+  "trialsPerMode": 5,
+  "note": "Values are median with min and max. Heap sizes are JSHeapUsedSize after a forced garbage collection.",
+  "summary": {
+    "leak": {
+      "baselineMB": {
+        "median": 4.485984802246094,
+        "min": 4.4845733642578125,
+        "max": 4.49017333984375
+      },
+      "afterMB": {
+        "median": 41.35358428955078,
+        "min": 41.35223388671875,
+        "max": 41.357688903808594
+      },
+      "growthMB": {
+        "median": 36.86759948730469,
+        "min": 36.86750793457031,
+        "max": 36.86766052246094
+      },
+      "catalogs": {
+        "median": 11,
+        "min": 11,
+        "max": 11
+      },
+      "detachedCards": {
+        "median": 240,
+        "min": 240,
+        "max": 240
+      }
+    },
+    "fixed": {
+      "baselineMB": {
+        "median": 4.491153717041016,
+        "min": 4.488521575927734,
+        "max": 4.494266510009766
+      },
+      "afterMB": {
+        "median": 4.7817535400390625,
+        "min": 4.7817535400390625,
+        "max": 4.7817840576171875
+      },
+      "growthMB": {
+        "median": 0.2905998229980469,
+        "min": 0.2874870300292969,
+        "max": 0.2932319641113281
+      },
+      "catalogs": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "detachedCards": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    }
+  },
+  "trials": {
+    "leak": [
+      {
+        "baselineMB": 4.4864959716796875,
+        "afterMB": 41.35400390625,
+        "growthMB": 36.86750793457031,
+        "catalogs": 11,
+        "detachedCards": 240
+      },
+      {
+        "baselineMB": 4.485984802246094,
+        "afterMB": 41.35358428955078,
+        "growthMB": 36.86759948730469,
+        "catalogs": 11,
+        "detachedCards": 240
+      },
+      {
+        "baselineMB": 4.49017333984375,
+        "afterMB": 41.357688903808594,
+        "growthMB": 36.867515563964844,
+        "catalogs": 11,
+        "detachedCards": 240
+      },
+      {
+        "baselineMB": 4.4845733642578125,
+        "afterMB": 41.35223388671875,
+        "growthMB": 36.86766052246094,
+        "catalogs": 11,
+        "detachedCards": 240
+      },
+      {
+        "baselineMB": 4.485343933105469,
+        "afterMB": 41.35299301147461,
+        "growthMB": 36.86764907836914,
+        "catalogs": 11,
+        "detachedCards": 240
+      }
+    ],
+    "fixed": [
+      {
+        "baselineMB": 4.491153717041016,
+        "afterMB": 4.7817535400390625,
+        "growthMB": 0.2905998229980469,
+        "catalogs": 1,
+        "detachedCards": 0
+      },
+      {
+        "baselineMB": 4.491085052490234,
+        "afterMB": 4.7817535400390625,
+        "growthMB": 0.2906684875488281,
+        "catalogs": 1,
+        "detachedCards": 0
+      },
+      {
+        "baselineMB": 4.493473052978516,
+        "afterMB": 4.7817840576171875,
+        "growthMB": 0.2883110046386719,
+        "catalogs": 1,
+        "detachedCards": 0
+      },
+      {
+        "baselineMB": 4.494266510009766,
+        "afterMB": 4.7817535400390625,
+        "growthMB": 0.2874870300292969,
+        "catalogs": 1,
+        "detachedCards": 0
+      },
+      {
+        "baselineMB": 4.488521575927734,
+        "afterMB": 4.7817535400390625,
+        "growthMB": 0.2932319641113281,
+        "catalogs": 1,
+        "detachedCards": 0
+      }
+    ]
+  }
+}

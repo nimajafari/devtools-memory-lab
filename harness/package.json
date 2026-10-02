@@ -1,0 +1,14 @@
+{
+  "name": "devtools-memory-lab-harness",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Optional measurement harness for the DevTools Memory Heap Lab",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "measure": "node measure.mjs"
+  },
+  "dependencies": {
+    "puppeteer": "25.12.0"
+  }
+}
