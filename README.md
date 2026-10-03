@@ -144,4 +144,4 @@ The `harness` folder contains a script that runs the lab in Chrome and prints th
 
 Built by Nima Jafari for Oxyplug. Released under the [MIT License](LICENSE).
 
-Companion article: [ARTICLE_URL](ARTICLE_URL)
+Companion article: [How to Find JavaScript Memory Leaks in Chrome DevTools, Step by Step](https://www.oxyplug.com/optimization/how-to-find-javascript-memory-leaks-in-chrome-devtools/)
