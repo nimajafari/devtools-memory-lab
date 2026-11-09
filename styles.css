@@ -83,6 +83,15 @@ button[disabled] {
   color: #14532d;
 }
 
+[data-mode="bounded"] .mode strong {
+  background: #fdf0d5;
+  color: #6b4100;
+}
+
+.mode a + a {
+  margin-left: 12px;
+}
+
 main {
   max-width: 1200px;
   margin: 0 auto;

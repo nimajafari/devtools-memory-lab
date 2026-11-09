@@ -1,143 +1,927 @@
 {
-  "date": "2026-10-01T05:48:24.518Z",
+  "date": "2026-11-09T05:47:03.846Z",
   "environment": {
     "chrome": "Chrome/154.0.8037.57",
     "puppeteer": "25.12.0",
-    "node": "v26.8.2",
-    "os": "Darwin 27.0.0 arm64"
+    "node": "v26.13.0",
+    "os": "Darwin 27.2.0 arm64"
+  },
+  "lab": {
+    "cacheLimit": 3,
+    "cardsPerPage": 24,
+    "switchesPerRound": 10
   },
   "trialsPerMode": 5,
-  "note": "Values are median with min and max. Heap sizes are JSHeapUsedSize after a forced garbage collection.",
+  "rounds": 5,
+  "note": "Round 0 is the fresh load. Each later round is 10 switches. Values are median with min and max. Heap sizes are JSHeapUsedSize after a forced garbage collection.",
   "summary": {
-    "leak": {
-      "baselineMB": {
-        "median": 4.485984802246094,
-        "min": 4.4845733642578125,
-        "max": 4.49017333984375
-      },
-      "afterMB": {
-        "median": 41.35358428955078,
-        "min": 41.35223388671875,
-        "max": 41.357688903808594
-      },
-      "growthMB": {
-        "median": 36.86759948730469,
-        "min": 36.86750793457031,
-        "max": 36.86766052246094
-      },
-      "catalogs": {
-        "median": 11,
-        "min": 11,
-        "max": 11
-      },
-      "detachedCards": {
-        "median": 240,
-        "min": 240,
-        "max": 240
-      }
-    },
-    "fixed": {
-      "baselineMB": {
-        "median": 4.491153717041016,
-        "min": 4.488521575927734,
-        "max": 4.494266510009766
-      },
-      "afterMB": {
-        "median": 4.7817535400390625,
-        "min": 4.7817535400390625,
-        "max": 4.7817840576171875
-      },
-      "growthMB": {
-        "median": 0.2905998229980469,
-        "min": 0.2874870300292969,
-        "max": 0.2932319641113281
-      },
-      "catalogs": {
-        "median": 1,
-        "min": 1,
-        "max": 1
-      },
-      "detachedCards": {
-        "median": 0,
-        "min": 0,
-        "max": 0
-      }
-    }
-  },
-  "trials": {
     "leak": [
       {
-        "baselineMB": 4.4864959716796875,
-        "afterMB": 41.35400390625,
-        "growthMB": 36.86750793457031,
-        "catalogs": 11,
-        "detachedCards": 240
+        "round": 0,
+        "catalogs": {
+          "median": 1,
+          "min": 1,
+          "max": 1
+        },
+        "detachedCards": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "heapMB": {
+          "median": 4.488105773925781,
+          "min": 4.486030578613281,
+          "max": 4.493377685546875
+        }
       },
       {
-        "baselineMB": 4.485984802246094,
-        "afterMB": 41.35358428955078,
-        "growthMB": 36.86759948730469,
-        "catalogs": 11,
-        "detachedCards": 240
+        "round": 1,
+        "catalogs": {
+          "median": 11,
+          "min": 11,
+          "max": 11
+        },
+        "detachedCards": {
+          "median": 240,
+          "min": 240,
+          "max": 240
+        },
+        "heapMB": {
+          "median": 41.37967300415039,
+          "min": 41.37717819213867,
+          "max": 41.38362503051758
+        }
       },
       {
-        "baselineMB": 4.49017333984375,
-        "afterMB": 41.357688903808594,
-        "growthMB": 36.867515563964844,
-        "catalogs": 11,
-        "detachedCards": 240
+        "round": 2,
+        "catalogs": {
+          "median": 21,
+          "min": 21,
+          "max": 21
+        },
+        "detachedCards": {
+          "median": 480,
+          "min": 480,
+          "max": 480
+        },
+        "heapMB": {
+          "median": 78.6867561340332,
+          "min": 78.68426132202148,
+          "max": 78.69070816040039
+        }
       },
       {
-        "baselineMB": 4.4845733642578125,
-        "afterMB": 41.35223388671875,
-        "growthMB": 36.86766052246094,
-        "catalogs": 11,
-        "detachedCards": 240
+        "round": 3,
+        "catalogs": {
+          "median": 31,
+          "min": 31,
+          "max": 31
+        },
+        "detachedCards": {
+          "median": 720,
+          "min": 720,
+          "max": 720
+        },
+        "heapMB": {
+          "median": 115.99505615234375,
+          "min": 115.99224090576172,
+          "max": 115.99868774414062
+        }
       },
       {
-        "baselineMB": 4.485343933105469,
-        "afterMB": 41.35299301147461,
-        "growthMB": 36.86764907836914,
-        "catalogs": 11,
-        "detachedCards": 240
+        "round": 4,
+        "catalogs": {
+          "median": 41,
+          "min": 41,
+          "max": 41
+        },
+        "detachedCards": {
+          "median": 960,
+          "min": 960,
+          "max": 960
+        },
+        "heapMB": {
+          "median": 153.30768966674805,
+          "min": 153.30519485473633,
+          "max": 153.31132125854492
+        }
+      },
+      {
+        "round": 5,
+        "catalogs": {
+          "median": 51,
+          "min": 51,
+          "max": 51
+        },
+        "detachedCards": {
+          "median": 1200,
+          "min": 1200,
+          "max": 1200
+        },
+        "heapMB": {
+          "median": 190.6146354675293,
+          "min": 190.61214065551758,
+          "max": 190.61858749389648
+        }
       }
     ],
     "fixed": [
       {
-        "baselineMB": 4.491153717041016,
-        "afterMB": 4.7817535400390625,
-        "growthMB": 0.2905998229980469,
-        "catalogs": 1,
-        "detachedCards": 0
+        "round": 0,
+        "catalogs": {
+          "median": 1,
+          "min": 1,
+          "max": 1
+        },
+        "detachedCards": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "heapMB": {
+          "median": 4.490741729736328,
+          "min": 4.488735198974609,
+          "max": 4.494495391845703
+        }
       },
       {
-        "baselineMB": 4.491085052490234,
-        "afterMB": 4.7817535400390625,
-        "growthMB": 0.2906684875488281,
-        "catalogs": 1,
-        "detachedCards": 0
+        "round": 1,
+        "catalogs": {
+          "median": 1,
+          "min": 1,
+          "max": 1
+        },
+        "detachedCards": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "heapMB": {
+          "median": 4.787586212158203,
+          "min": 4.787586212158203,
+          "max": 4.787616729736328
+        }
       },
       {
-        "baselineMB": 4.493473052978516,
-        "afterMB": 4.7817840576171875,
-        "growthMB": 0.2883110046386719,
-        "catalogs": 1,
-        "detachedCards": 0
+        "round": 2,
+        "catalogs": {
+          "median": 1,
+          "min": 1,
+          "max": 1
+        },
+        "detachedCards": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "heapMB": {
+          "median": 4.787467956542969,
+          "min": 4.787467956542969,
+          "max": 4.787498474121094
+        }
       },
       {
-        "baselineMB": 4.494266510009766,
-        "afterMB": 4.7817535400390625,
-        "growthMB": 0.2874870300292969,
-        "catalogs": 1,
-        "detachedCards": 0
+        "round": 3,
+        "catalogs": {
+          "median": 1,
+          "min": 1,
+          "max": 1
+        },
+        "detachedCards": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "heapMB": {
+          "median": 4.787509918212891,
+          "min": 4.787509918212891,
+          "max": 4.787540435791016
+        }
       },
       {
-        "baselineMB": 4.488521575927734,
-        "afterMB": 4.7817535400390625,
-        "growthMB": 0.2932319641113281,
-        "catalogs": 1,
-        "detachedCards": 0
+        "round": 4,
+        "catalogs": {
+          "median": 1,
+          "min": 1,
+          "max": 1
+        },
+        "detachedCards": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "heapMB": {
+          "median": 4.792568206787109,
+          "min": 4.792568206787109,
+          "max": 4.792598724365234
+        }
+      },
+      {
+        "round": 5,
+        "catalogs": {
+          "median": 1,
+          "min": 1,
+          "max": 1
+        },
+        "detachedCards": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "heapMB": {
+          "median": 4.792697906494141,
+          "min": 4.792697906494141,
+          "max": 4.792728424072266
+        }
       }
+    ],
+    "bounded": [
+      {
+        "round": 0,
+        "catalogs": {
+          "median": 1,
+          "min": 1,
+          "max": 1
+        },
+        "detachedCards": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "heapMB": {
+          "median": 4.490192413330078,
+          "min": 4.488613128662109,
+          "max": 4.490741729736328
+        }
+      },
+      {
+        "round": 1,
+        "catalogs": {
+          "median": 3,
+          "min": 3,
+          "max": 3
+        },
+        "detachedCards": {
+          "median": 48,
+          "min": 48,
+          "max": 48
+        },
+        "heapMB": {
+          "median": 12.233020782470703,
+          "min": 12.230278015136719,
+          "max": 12.233051300048828
+        }
+      },
+      {
+        "round": 2,
+        "catalogs": {
+          "median": 3,
+          "min": 3,
+          "max": 3
+        },
+        "detachedCards": {
+          "median": 48,
+          "min": 48,
+          "max": 48
+        },
+        "heapMB": {
+          "median": 12.227245330810547,
+          "min": 12.227214813232422,
+          "max": 12.22979736328125
+        }
+      },
+      {
+        "round": 3,
+        "catalogs": {
+          "median": 3,
+          "min": 3,
+          "max": 3
+        },
+        "detachedCards": {
+          "median": 48,
+          "min": 48,
+          "max": 48
+        },
+        "heapMB": {
+          "median": 12.232093811035156,
+          "min": 12.232063293457031,
+          "max": 12.23464584350586
+        }
+      },
+      {
+        "round": 4,
+        "catalogs": {
+          "median": 3,
+          "min": 3,
+          "max": 3
+        },
+        "detachedCards": {
+          "median": 48,
+          "min": 48,
+          "max": 48
+        },
+        "heapMB": {
+          "median": 12.232402801513672,
+          "min": 12.232372283935547,
+          "max": 12.234954833984375
+        }
+      },
+      {
+        "round": 5,
+        "catalogs": {
+          "median": 3,
+          "min": 3,
+          "max": 3
+        },
+        "detachedCards": {
+          "median": 48,
+          "min": 48,
+          "max": 48
+        },
+        "heapMB": {
+          "median": 12.232532501220703,
+          "min": 12.232501983642578,
+          "max": 12.235084533691406
+        }
+      }
+    ]
+  },
+  "trials": {
+    "leak": [
+      [
+        {
+          "round": 0,
+          "heapMB": 4.4881439208984375,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 1,
+          "heapMB": 41.37967300415039,
+          "catalogs": 11,
+          "detachedCards": 240
+        },
+        {
+          "round": 2,
+          "heapMB": 78.6867561340332,
+          "catalogs": 21,
+          "detachedCards": 480
+        },
+        {
+          "round": 3,
+          "heapMB": 115.99505615234375,
+          "catalogs": 31,
+          "detachedCards": 720
+        },
+        {
+          "round": 4,
+          "heapMB": 153.30768966674805,
+          "catalogs": 41,
+          "detachedCards": 960
+        },
+        {
+          "round": 5,
+          "heapMB": 190.6146354675293,
+          "catalogs": 51,
+          "detachedCards": 1200
+        }
+      ],
+      [
+        {
+          "round": 0,
+          "heapMB": 4.493377685546875,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 1,
+          "heapMB": 41.38362503051758,
+          "catalogs": 11,
+          "detachedCards": 240
+        },
+        {
+          "round": 2,
+          "heapMB": 78.69070816040039,
+          "catalogs": 21,
+          "detachedCards": 480
+        },
+        {
+          "round": 3,
+          "heapMB": 115.99868774414062,
+          "catalogs": 31,
+          "detachedCards": 720
+        },
+        {
+          "round": 4,
+          "heapMB": 153.31132125854492,
+          "catalogs": 41,
+          "detachedCards": 960
+        },
+        {
+          "round": 5,
+          "heapMB": 190.61858749389648,
+          "catalogs": 51,
+          "detachedCards": 1200
+        }
+      ],
+      [
+        {
+          "round": 0,
+          "heapMB": 4.488105773925781,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 1,
+          "heapMB": 41.380184173583984,
+          "catalogs": 11,
+          "detachedCards": 240
+        },
+        {
+          "round": 2,
+          "heapMB": 78.6872673034668,
+          "catalogs": 21,
+          "detachedCards": 480
+        },
+        {
+          "round": 3,
+          "heapMB": 115.99556732177734,
+          "catalogs": 31,
+          "detachedCards": 720
+        },
+        {
+          "round": 4,
+          "heapMB": 153.30820083618164,
+          "catalogs": 41,
+          "detachedCards": 960
+        },
+        {
+          "round": 5,
+          "heapMB": 190.6151466369629,
+          "catalogs": 51,
+          "detachedCards": 1200
+        }
+      ],
+      [
+        {
+          "round": 0,
+          "heapMB": 4.486122131347656,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 1,
+          "heapMB": 41.377567291259766,
+          "catalogs": 11,
+          "detachedCards": 240
+        },
+        {
+          "round": 2,
+          "heapMB": 78.68465042114258,
+          "catalogs": 21,
+          "detachedCards": 480
+        },
+        {
+          "round": 3,
+          "heapMB": 115.99263000488281,
+          "catalogs": 31,
+          "detachedCards": 720
+        },
+        {
+          "round": 4,
+          "heapMB": 153.3052635192871,
+          "catalogs": 41,
+          "detachedCards": 960
+        },
+        {
+          "round": 5,
+          "heapMB": 190.61252975463867,
+          "catalogs": 51,
+          "detachedCards": 1200
+        }
+      ],
+      [
+        {
+          "round": 0,
+          "heapMB": 4.486030578613281,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 1,
+          "heapMB": 41.37717819213867,
+          "catalogs": 11,
+          "detachedCards": 240
+        },
+        {
+          "round": 2,
+          "heapMB": 78.68426132202148,
+          "catalogs": 21,
+          "detachedCards": 480
+        },
+        {
+          "round": 3,
+          "heapMB": 115.99224090576172,
+          "catalogs": 31,
+          "detachedCards": 720
+        },
+        {
+          "round": 4,
+          "heapMB": 153.30519485473633,
+          "catalogs": 41,
+          "detachedCards": 960
+        },
+        {
+          "round": 5,
+          "heapMB": 190.61214065551758,
+          "catalogs": 51,
+          "detachedCards": 1200
+        }
+      ]
+    ],
+    "fixed": [
+      [
+        {
+          "round": 0,
+          "heapMB": 4.494495391845703,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 1,
+          "heapMB": 4.787586212158203,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 2,
+          "heapMB": 4.787467956542969,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 3,
+          "heapMB": 4.787509918212891,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 4,
+          "heapMB": 4.792568206787109,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 5,
+          "heapMB": 4.792697906494141,
+          "catalogs": 1,
+          "detachedCards": 0
+        }
+      ],
+      [
+        {
+          "round": 0,
+          "heapMB": 4.490741729736328,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 1,
+          "heapMB": 4.787586212158203,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 2,
+          "heapMB": 4.787467956542969,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 3,
+          "heapMB": 4.787509918212891,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 4,
+          "heapMB": 4.792568206787109,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 5,
+          "heapMB": 4.792697906494141,
+          "catalogs": 1,
+          "detachedCards": 0
+        }
+      ],
+      [
+        {
+          "round": 0,
+          "heapMB": 4.491176605224609,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 1,
+          "heapMB": 4.787586212158203,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 2,
+          "heapMB": 4.787467956542969,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 3,
+          "heapMB": 4.787509918212891,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 4,
+          "heapMB": 4.792568206787109,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 5,
+          "heapMB": 4.792697906494141,
+          "catalogs": 1,
+          "detachedCards": 0
+        }
+      ],
+      [
+        {
+          "round": 0,
+          "heapMB": 4.490741729736328,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 1,
+          "heapMB": 4.787586212158203,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 2,
+          "heapMB": 4.787467956542969,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 3,
+          "heapMB": 4.787509918212891,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 4,
+          "heapMB": 4.792568206787109,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 5,
+          "heapMB": 4.792697906494141,
+          "catalogs": 1,
+          "detachedCards": 0
+        }
+      ],
+      [
+        {
+          "round": 0,
+          "heapMB": 4.488735198974609,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 1,
+          "heapMB": 4.787616729736328,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 2,
+          "heapMB": 4.787498474121094,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 3,
+          "heapMB": 4.787540435791016,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 4,
+          "heapMB": 4.792598724365234,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 5,
+          "heapMB": 4.792728424072266,
+          "catalogs": 1,
+          "detachedCards": 0
+        }
+      ]
+    ],
+    "bounded": [
+      [
+        {
+          "round": 0,
+          "heapMB": 4.490200042724609,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 1,
+          "heapMB": 12.233051300048828,
+          "catalogs": 3,
+          "detachedCards": 48
+        },
+        {
+          "round": 2,
+          "heapMB": 12.227245330810547,
+          "catalogs": 3,
+          "detachedCards": 48
+        },
+        {
+          "round": 3,
+          "heapMB": 12.232093811035156,
+          "catalogs": 3,
+          "detachedCards": 48
+        },
+        {
+          "round": 4,
+          "heapMB": 12.232402801513672,
+          "catalogs": 3,
+          "detachedCards": 48
+        },
+        {
+          "round": 5,
+          "heapMB": 12.232532501220703,
+          "catalogs": 3,
+          "detachedCards": 48
+        }
+      ],
+      [
+        {
+          "round": 0,
+          "heapMB": 4.489261627197266,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 1,
+          "heapMB": 12.233051300048828,
+          "catalogs": 3,
+          "detachedCards": 48
+        },
+        {
+          "round": 2,
+          "heapMB": 12.227245330810547,
+          "catalogs": 3,
+          "detachedCards": 48
+        },
+        {
+          "round": 3,
+          "heapMB": 12.232093811035156,
+          "catalogs": 3,
+          "detachedCards": 48
+        },
+        {
+          "round": 4,
+          "heapMB": 12.232402801513672,
+          "catalogs": 3,
+          "detachedCards": 48
+        },
+        {
+          "round": 5,
+          "heapMB": 12.232532501220703,
+          "catalogs": 3,
+          "detachedCards": 48
+        }
+      ],
+      [
+        {
+          "round": 0,
+          "heapMB": 4.488613128662109,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 1,
+          "heapMB": 12.233020782470703,
+          "catalogs": 3,
+          "detachedCards": 48
+        },
+        {
+          "round": 2,
+          "heapMB": 12.227214813232422,
+          "catalogs": 3,
+          "detachedCards": 48
+        },
+        {
+          "round": 3,
+          "heapMB": 12.232063293457031,
+          "catalogs": 3,
+          "detachedCards": 48
+        },
+        {
+          "round": 4,
+          "heapMB": 12.232372283935547,
+          "catalogs": 3,
+          "detachedCards": 48
+        },
+        {
+          "round": 5,
+          "heapMB": 12.232501983642578,
+          "catalogs": 3,
+          "detachedCards": 48
+        }
+      ],
+      [
+        {
+          "round": 0,
+          "heapMB": 4.490741729736328,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 1,
+          "heapMB": 12.230278015136719,
+          "catalogs": 3,
+          "detachedCards": 48
+        },
+        {
+          "round": 2,
+          "heapMB": 12.22979736328125,
+          "catalogs": 3,
+          "detachedCards": 48
+        },
+        {
+          "round": 3,
+          "heapMB": 12.23464584350586,
+          "catalogs": 3,
+          "detachedCards": 48
+        },
+        {
+          "round": 4,
+          "heapMB": 12.234954833984375,
+          "catalogs": 3,
+          "detachedCards": 48
+        },
+        {
+          "round": 5,
+          "heapMB": 12.235084533691406,
+          "catalogs": 3,
+          "detachedCards": 48
+        }
+      ],
+      [
+        {
+          "round": 0,
+          "heapMB": 4.490192413330078,
+          "catalogs": 1,
+          "detachedCards": 0
+        },
+        {
+          "round": 1,
+          "heapMB": 12.233020782470703,
+          "catalogs": 3,
+          "detachedCards": 48
+        },
+        {
+          "round": 2,
+          "heapMB": 12.227214813232422,
+          "catalogs": 3,
+          "detachedCards": 48
+        },
+        {
+          "round": 3,
+          "heapMB": 12.232063293457031,
+          "catalogs": 3,
+          "detachedCards": 48
+        },
+        {
+          "round": 4,
+          "heapMB": 12.232372283935547,
+          "catalogs": 3,
+          "detachedCards": 48
+        },
+        {
+          "round": 5,
+          "heapMB": 12.232501983642578,
+          "catalogs": 3,
+          "detachedCards": 48
+        }
+      ]
     ]
   }
 }

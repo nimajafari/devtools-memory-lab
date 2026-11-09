@@ -1,6 +1,6 @@
 # DevTools Memory Heap Lab
 
-A small demo store with two memory leaks, built so you can practice finding them with the Chrome DevTools Memory panel.
+A small demo store with two memory leaks, built so you can practice finding them with the Chrome DevTools Memory panel. A third mode adds a bounded cache, so you can practice telling a leak apart from memory that the page keeps on purpose.
 
 <!-- screenshot: the Oxyplug Demo Store page in leak mode -->
 
@@ -16,7 +16,11 @@ You need desktop Chrome or Edge. Pick one of these options:
 2. Clone this repo and open `index.html` in the browser. No install and no build step.
 3. Serve the folder with any static server, for example `npx serve`.
 
-The page starts in **Leak mode**. The link in the header switches to **Fixed mode**, which adds `?mode=fixed` to the URL.
+The page starts in **Leak mode**. The links in the header switch between the three modes:
+
+* **Leak mode** (`?mode=leak`, the default) has both leaks.
+* **Fixed mode** (`?mode=fixed`) fixes both leaks.
+* **Bounded cache mode** (`?mode=bounded`) fixes the listener leak and keeps a small cache of recently viewed categories. It is used in Exercise 6.
 
 ## Before you start
 
@@ -121,6 +125,27 @@ Optional: the Memory panel also has a **Detached elements** profiling type. Sele
 
 <!-- screenshot: comparison view in fixed mode -->
 
+### Exercise 6: Leak or bounded cache?
+
+**Goal:** tell a leak apart from a cache that grows to a limit and then stops.
+
+Some memory growth is intended. A cache that keeps recent views so the back button is fast will grow at first. The question is whether it stops. One comparison between a fresh load and a later snapshot cannot answer that, because a leak and a cache that is still filling up look the same.
+
+1. Click **Switch to bounded cache mode** in the page header.
+2. In the **Memory** panel, take snapshot 1 right after the page loads.
+3. Click **Run 10 switches**, click **Collect garbage**, and take snapshot 2.
+4. Repeat step 3 two more times, to take snapshots 3 and 4.
+5. For each snapshot, write down the `ProductCatalog` count and the `Detached` card count in the **Summary** view.
+6. Compare snapshot 2 with snapshot 1, then snapshot 4 with snapshot 3, and look at the **# New**, **# Deleted** and **# Delta** columns.
+7. Click one detached `card` and read its Retainers until you reach a name from `app.js`.
+8. Repeat steps 2 to 6 in leak mode and put the two sets of numbers side by side.
+
+**What you should see:** in bounded cache mode, the counts go up between snapshot 1 and snapshot 2, then stay the same. Later comparisons show new and deleted objects, but a delta of 0. In leak mode, the counts go up by the same amount every time. The retainer path for a bounded cache card ends at the cache, and the stats panel shows its limit.
+
+Compare the counts with the **Cache limit** in the stats panel. A flat line shows the growth stopped. It does not show that it stopped at the limit you intended. [SOLUTIONS.md](SOLUTIONS.md) explains why that difference matters.
+
+<!-- screenshot: Summary view counts for snapshots 1 to 4 in bounded cache mode -->
+
 When you are done, read [SOLUTIONS.md](SOLUTIONS.md) for the cause of each leak and its fix. [CAVEATS.md](CAVEATS.md) lists the limits of this lab.
 
 ## UI labels note
@@ -131,7 +156,7 @@ Checked against Chrome version: TODO
 
 ## Optional: measure it yourself
 
-The `harness` folder contains a script that runs the lab in Chrome and prints the numbers. You do not need it for the exercises. See [harness/README.md](harness/README.md).
+The `harness` folder contains a script that runs the lab in Chrome and prints the numbers after each round of switches. It also contains tests that assert the memory policy of each mode. Leak mode must grow every round, fixed mode must keep nothing, and bounded cache mode must stay at its limit. They show how to turn a memory audit into a regression check. You do not need the harness for the exercises. See [harness/README.md](harness/README.md).
 
 ## Further reading
 
@@ -143,5 +168,7 @@ The `harness` folder contains a script that runs the lab in Chrome and prints th
 ## License and credits
 
 Built by Nima Jafari for Oxyplug. Released under the [MIT License](LICENSE).
+
+Thanks to Timothy Urista, who suggested the bounded cache scenario and the idea of asserting the cache limit in a test.
 
 Companion article: [How to Find JavaScript Memory Leaks in Chrome DevTools, Step by Step](https://www.oxyplug.com/optimization/how-to-find-javascript-memory-leaks-in-chrome-devtools/)
