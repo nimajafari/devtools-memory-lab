@@ -10,4 +10,6 @@ The limits of this lab, so you know how far to trust the numbers.
 * **The INP connection is indirect.** A growing heap can make garbage collection pauses longer, and that can slow interactions. This lab does not measure INP.
 * **No search claims.** This lab does not show that heap size is a ranking factor, or that it changes how Googlebot indexes a page.
 * **Desktop only.** The exercises were written for desktop Chrome. Edge works too, but some labels differ.
+* **A bounded cache can look like a leak at first.** Bounded cache mode grows during warm-up, so a single before and after comparison shows growth. Repeat the flow several times and compare later snapshots with each other.
+* **The lab's cache plateau is easy to reach.** The lab has only 5 categories, so even an unbounded cache stops growing quickly. On a real site the number of keys can be much larger, so check the limit in the code as well as the plateau.
 * **Harness numbers come from an automated browser.** The optional harness drives Chrome for Testing in headless mode and reads the used JS heap size after a forced garbage collection. Your numbers in a normal Chrome window will differ.

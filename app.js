@@ -1,11 +1,14 @@
 // Oxyplug Demo Store: a mock category page for the DevTools memory lab.
 
-// The active mode comes from the URL: "?mode=fixed" or the default, "leak".
-const MODE = new URLSearchParams(location.search).get('mode') === 'fixed' ? 'fixed' : 'leak';
+// The active mode comes from the URL: "?mode=fixed", "?mode=bounded" or the default, "leak".
+const MODES = ['leak', 'fixed', 'bounded'];
+const requestedMode = new URLSearchParams(location.search).get('mode');
+const MODE = MODES.includes(requestedMode) ? requestedMode : 'leak';
 
 const CATEGORIES = ['Shoes', 'Bags', 'Watches', 'Hats', 'Jackets'];
 const PRODUCTS_PER_RENDER = 6000;
 const CARDS_PER_PAGE = 24;
+const CACHE_LIMIT = 3;
 const DESCRIPTION_WORDS = 58;
 const CARD_MIN_WIDTH = 220;
 
@@ -53,6 +56,37 @@ class CardCache {
   constructor() { this.items = []; }
   add(element) { this.items.push(element); }
   clear() { this.items.length = 0; }
+  get cardCount() { return this.items.length; }
+}
+
+// Bounded mode: keeps the catalog and cards of the most recently viewed
+// categories, up to a fixed limit, and drops the least recently used one.
+class CategoryCache {
+  constructor(limit) {
+    this.limit = limit;
+    this.entries = new Map();
+  }
+  get(category) {
+    const entry = this.entries.get(category);
+    if (entry) {
+      // Move the entry to the end, so the Map stays in least recently used order.
+      this.entries.delete(category);
+      this.entries.set(category, entry);
+    }
+    return entry;
+  }
+  set(category, entry) {
+    this.entries.set(category, entry);
+    if (this.entries.size > this.limit) {
+      const oldest = this.entries.keys().next().value;
+      this.entries.delete(oldest);
+    }
+  }
+  get cardCount() {
+    let count = 0;
+    for (const entry of this.entries.values()) count += entry.cards.length;
+    return count;
+  }
 }
 
 const grid = document.getElementById('grid');
@@ -60,7 +94,7 @@ const gridTitle = document.getElementById('grid-title');
 const categoryNav = document.getElementById('categories');
 const runButton = document.getElementById('run-switches');
 
-const cardCache = new CardCache();
+const cardCache = MODE === 'bounded' ? new CategoryCache(CACHE_LIMIT) : new CardCache();
 let renderController = null;
 let currentCategory = null;
 let renderCount = 0;
@@ -100,26 +134,43 @@ function layoutGrid(catalog) {
 
 function updateStats() {
   document.getElementById('stat-renders').textContent = renderCount;
-  document.getElementById('stat-cached').textContent = cardCache.items.length;
+  document.getElementById('stat-cached').textContent = cardCache.cardCount;
   document.getElementById('stat-listeners').textContent = listenerCount;
 }
 
+function loadCategory(category) {
+  const catalog = new ProductCatalog(category, PRODUCTS_PER_RENDER);
+  const cards = catalog.products.slice(0, CARDS_PER_PAGE).map(createCard);
+  return { catalog, cards };
+}
+
+// Bounded mode reuses a cached category, and loads and caches it otherwise.
+function loadCategoryCached(category) {
+  let entry = cardCache.get(category);
+  if (!entry) {
+    entry = loadCategory(category);
+    cardCache.set(category, entry);
+  }
+  return entry;
+}
+
 function renderCategory(category) {
-  if (MODE === 'fixed') {
+  if (MODE !== 'leak') {
     if (renderController) {
       renderController.abort();
       listenerCount--;
     }
     renderController = new AbortController();
-    cardCache.clear();
   }
+  if (MODE === 'fixed') cardCache.clear();
 
-  const catalog = new ProductCatalog(category, PRODUCTS_PER_RENDER);
-  const cards = catalog.products.slice(0, CARDS_PER_PAGE).map(createCard);
+  const { catalog, cards } = MODE === 'bounded'
+    ? loadCategoryCached(category)
+    : loadCategory(category);
   grid.replaceChildren(...cards);
-  cards.forEach(card => cardCache.add(card));
+  if (MODE !== 'bounded') cards.forEach(card => cardCache.add(card));
 
-  const options = MODE === 'fixed' ? { signal: renderController.signal } : {};
+  const options = MODE === 'leak' ? {} : { signal: renderController.signal };
   window.addEventListener('resize', () => layoutGrid(catalog), options);
   listenerCount++;
   layoutGrid(catalog);
@@ -144,13 +195,23 @@ async function runSwitches() {
   runButton.disabled = false;
 }
 
+const MODE_NAMES = { leak: 'leak mode', fixed: 'fixed mode', bounded: 'bounded cache mode' };
+
 function showMode() {
-  const fixed = MODE === 'fixed';
   document.body.dataset.mode = MODE;
-  document.getElementById('mode-label').textContent = fixed ? 'Fixed mode' : 'Leak mode';
-  const link = document.getElementById('mode-link');
-  link.textContent = fixed ? 'Switch to leak mode' : 'Switch to fixed mode';
-  link.href = fixed ? '?mode=leak' : '?mode=fixed';
+  const name = MODE_NAMES[MODE];
+  document.getElementById('mode-label').textContent = name[0].toUpperCase() + name.slice(1);
+  const links = MODES.filter(mode => mode !== MODE).map(mode => {
+    const link = document.createElement('a');
+    link.href = '?mode=' + mode;
+    link.textContent = 'Switch to ' + MODE_NAMES[mode];
+    return link;
+  });
+  document.getElementById('mode-links').replaceChildren(...links);
+  if (MODE === 'bounded') {
+    document.getElementById('stat-limit').textContent = CACHE_LIMIT + ' categories';
+    document.getElementById('stat-limit-row').hidden = false;
+  }
 }
 
 categoryNav.addEventListener('click', event => {
