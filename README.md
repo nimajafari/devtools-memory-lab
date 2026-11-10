@@ -169,6 +169,6 @@ The `harness` folder contains a script that runs the lab in Chrome and prints th
 
 Built by Nima Jafari for Oxyplug. Released under the [MIT License](LICENSE).
 
-Thanks to Timothy Urista, who suggested the bounded cache scenario and the idea of asserting the cache limit in a test.
+Thanks to [Timothy Urista](https://www.linkedin.com/in/timothyurista/), who suggested the bounded cache scenario and the idea of asserting the cache limit in a test.
 
 Companion article: [How to Find JavaScript Memory Leaks in Chrome DevTools, Step by Step](https://www.oxyplug.com/optimization/how-to-find-javascript-memory-leaks-in-chrome-devtools/)
