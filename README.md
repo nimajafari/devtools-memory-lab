@@ -152,7 +152,7 @@ When you are done, read [SOLUTIONS.md](SOLUTIONS.md) for the cause of each leak 
 
 DevTools labels and icons change between Chrome releases. If a button or column has a different name in your browser, look for the closest match.
 
-Checked against Chrome version: TODO
+Checked against Chrome version: 157.0.8103.51 (macOS, arm64)
 
 ## Optional: measure it yourself
 
